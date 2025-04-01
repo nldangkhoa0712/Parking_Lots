@@ -20,8 +20,6 @@ import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 @EnableTransactionManagement
 @ComponentScan(basePackages = {
         "com.nldk.controllers",
-        "com.nldk.repositories",
-        "com.nldk.services"
 })
 public class SecurityConfigs {
 
@@ -38,10 +36,11 @@ public class SecurityConfigs {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(c -> c.disable())
-                .authorizeRequests(request -> request.requestMatchers("/", "/home").permitAll()
+                .authorizeHttpRequests(request -> request.requestMatchers("/", "/home").permitAll()
                         .requestMatchers(HttpMethod.GET, "/home").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, "/home").hasAnyRole("ADMIN", "USER")
-                        .anyRequest().authenticated())
+//                        .anyRequest().authenticated()
+                )
                 .formLogin(formLogin -> formLogin.loginPage("/login")
                         .defaultSuccessUrl("/", true).failureUrl("/login?error=true").permitAll())
                 .logout(LogoutDsl -> LogoutDsl.logoutSuccessUrl("/login").permitAll());
