@@ -37,7 +37,7 @@ build/
 ### Mac OS ###
 .DS_Store
 
-/ParkingWeb/target
-/ParkingWeb/.idea
-/ParkingWeb/.smarttomcat
+./ParkingWeb/target
+./ParkingWeb/.idea
+./ParkingWeb/.smarttomcat
 
