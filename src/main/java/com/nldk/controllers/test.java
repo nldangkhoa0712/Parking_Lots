@@ -11,6 +11,7 @@ public class test {
     @GetMapping("/hello")
     public String hello(Model model) {
         model.addAttribute("message", "Hello Khoa");
+        
         return "hello";
     }
 }

@@ -1,10 +1,7 @@
 package com.nldk.pojo;
 
-import com.nldk.utils.ValidPassword;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import org.hibernate.annotations.ColumnDefault;
 
@@ -15,6 +12,7 @@ import java.time.Instant;
 public class User {
     @Id
     @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Size(max = 255)
@@ -25,8 +23,6 @@ public class User {
     @Size(max = 255)
     @NotNull
     @Column(name = "email", nullable = false)
-    @Pattern(regexp = "^[A-Za-z0-9+_.-]+@(.+)$",
-            message = "{user.email.error.invalidMsg}")
     private String email;
 
     @Size(max = 20)
@@ -36,8 +32,6 @@ public class User {
 
     @Size(max = 255)
     @NotNull
-    @NotEmpty(message = "{user.passwordHash.sizeMsg}")
-    @ValidPassword
     @Column(name = "password_hash", nullable = false)
     private String passwordHash;
 

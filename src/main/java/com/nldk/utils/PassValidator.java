@@ -1,10 +1,7 @@
 package com.nldk.utils;
 
-import com.nldk.pojo.User;
-import jakarta.faces.validator.Validator;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
-import org.springframework.stereotype.Component;
 
 
 public class PassValidator implements ConstraintValidator<ValidPassword, String> {
