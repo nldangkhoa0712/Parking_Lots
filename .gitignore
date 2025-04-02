@@ -41,3 +41,13 @@ build/
 ./ParkingWeb/.idea
 ./ParkingWeb/.smarttomcat
 
+/.smarttomcat/Parking_Web/conf/catalina.policy
+/.smarttomcat/Parking_Web/conf/catalina.properties
+/.smarttomcat/Parking_Web/conf/context.xml
+/.smarttomcat/Parking_Web/conf/jaspic-providers.xml
+/.smarttomcat/Parking_Web/conf/jaspic-providers.xsd
+/.smarttomcat/Parking_Web/conf/logging.properties
+/.smarttomcat/Parking_Web/conf/server.xml
+/.smarttomcat/Parking_Web/conf/tomcat-users.xml
+/.smarttomcat/Parking_Web/conf/tomcat-users.xsd
+/.smarttomcat/Parking_Web/conf/web.xml
