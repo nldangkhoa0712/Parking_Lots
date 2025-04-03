@@ -1,21 +1,19 @@
 package com.nldk.controllers;
 
 
-import com.nldk.pojo.User;
-import com.nldk.services.UserService;
+import com.nldk.services.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@ControllerAdvice
-@RequestMapping("api")
+//@RequestMapping("api")
 public class AuthController {
     @Autowired
-    private UserService userService;
+    private CustomUserDetailsService userService;
     
-    @GetMapping("auth")
-    public String Register() {
+    @GetMapping("/auth")
+    public String Auth() {
 //        System.out.println("Đã vào Register() controller!");
 //        User user = new User();
 //        

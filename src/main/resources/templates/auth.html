@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en" >
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,24 +19,27 @@
 <body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
 <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
     <!-- Tabs -->
-    <div class="flex mb-6 border-b">
+    <div class="flex mb-6 border-b"> 
         <button id="login-tab" class="flex-1 py-3 font-medium text-center border-b-2 border-blue-500 text-blue-500">Login</button>
         <button id="register-tab" class="flex-1 py-3 font-medium text-center text-gray-500 hover:text-gray-700">Register</button>
     </div>
 
     <!-- Login Form -->
     <div id="login-form" class="form-container active">
-        <form>
+        <form th:action="@{/auth}" method="post">
             <div class="mb-4">
                 <label for="login-email" class="block mb-2 text-sm font-medium text-gray-700">Email</label>
-                <input type="email" id="login-email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Enter your email">
+                <input type="text" name="email" id="login-email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Enter your email">
             </div>
             <div class="mb-6">
                 <label for="login-password" class="block mb-2 text-sm font-medium text-gray-700">Password</label>
-                <input type="password" id="login-password" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Enter your password">
+                <input type="text" name="phone" id="login-password" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Enter your phone">
                 <div class="mt-1 text-right">
                     <a href="#" class="text-xs text-blue-500 hover:underline">Forgot Password?</a>
                 </div>
+            </div>
+            <div th:if="${errorMessage}" style="color: red;">
+                <p th:text="${errorMessage}"></p>
             </div>
             <div class="mb-4">
                 <label class="flex items-center">

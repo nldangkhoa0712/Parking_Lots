@@ -2,6 +2,9 @@ package com.nldk.repositories.irepositories;
 
 import com.nldk.pojo.User;
 
+import java.util.List;
+import java.util.Optional;
+
 public interface IUserRepositories {
-    void createUser(User user);
+    User getUserByEmail(String email);
 }

@@ -1,7 +1,11 @@
 package com.nldk.services.iservices;
 
 import com.nldk.pojo.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
-public interface IUserServices {
-    void createUser(User user);
+import java.util.List;
+
+public interface IUserServices extends UserDetailsService {
+//    void addUser(User user);
+//    User getUserByEmail(String email);
 }
