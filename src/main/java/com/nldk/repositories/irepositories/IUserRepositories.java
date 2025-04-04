@@ -7,4 +7,5 @@ import java.util.Optional;
 
 public interface IUserRepositories {
     User getUserByEmail(String email);
+    User getUserByEmailAndPassword(String email, String password);
 }

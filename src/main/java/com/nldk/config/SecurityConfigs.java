@@ -11,6 +11,8 @@ import org.springframework.security.config.annotation.web.LogoutDsl;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
@@ -29,8 +31,8 @@ public class SecurityConfigs {
     private static final Logger logger = LoggerFactory.getLogger(SecurityConfigs.class);
 
     @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+    public PasswordEncoder passwordEncoder() {
+        return NoOpPasswordEncoder.getInstance();
     }
 
     @Bean
@@ -46,8 +48,12 @@ public class SecurityConfigs {
                         .requestMatchers(HttpMethod.GET, "/home").hasAnyRole("admin", "user")
                         .anyRequest().authenticated()
                 )
-                .formLogin(formLogin -> formLogin.loginPage("/auth").loginProcessingUrl("/auth")
-                        .defaultSuccessUrl("/hello", true).failureUrl("/auth?error=true").permitAll())
+                .formLogin(formLogin -> formLogin.loginPage("/auth")
+                        .loginProcessingUrl("/auth")
+                        .usernameParameter("email")
+                        .passwordParameter("password")
+                        .defaultSuccessUrl("/home", true)
+                        .failureUrl("/auth?error=true").permitAll())
                 .logout(LogoutDsl -> LogoutDsl.logoutSuccessUrl("/auth").permitAll());
         return http.build();
     }

@@ -1,0 +1,145 @@
+<!-- templates/pages/home.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/customer.html}"
+        >
+
+<head>
+    <title>Home Page</title>
+</head>
+<body>
+
+<section layout:fragment="content">
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Secure Parking for Cars & Motorcycles</h1>
+        <p>Find the perfect parking spot for your vehicle. Safe, convenient, and affordable parking solutions in
+            prime
+            locations.</p>
+        <a href="#booking" class="btn">Book Your Spot Now</a>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="section-title">
+            <h2>Our Services</h2>
+        </div>
+        <div class="services-container">
+            <div class="service-card">
+                <div class="service-image car-parking"></div>
+                <div class="service-content">
+                    <h3>Car Parking</h3>
+                    <p>Spacious parking spots for all types of cars with 24/7 security monitoring and easy
+                        access.</p>
+                    <div class="price">From $5/hour or $25/day</div>
+                    <a href="#booking" class="btn">Reserve Now</a>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-image bike-parking"></div>
+                <div class="service-content">
+                    <h3>Motorcycle Parking</h3>
+                    <p>Dedicated motorcycle parking areas with specialized security features and weather
+                        protection.</p>
+                    <div class="price">From $2/hour or $10/day</div>
+                    <a href="#booking" class="btn">Reserve Now</a>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-image vip-parking"></div>
+                <div class="service-content">
+                    <h3>VIP Parking</h3>
+                    <p>Premium spots with valet service, car wash options, and priority access for our VIP
+                        members.</p>
+                    <div class="price">From $10/hour or $40/day</div>
+                    <a href="#booking" class="btn">Reserve Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="features-container">
+            <div class="section-title">
+                <h2>Why Choose Us</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">🔒</div>
+                    <h3>24/7 Security</h3>
+                    <p>CCTV cameras, security personnel, and advanced security systems for your vehicle's
+                        safety.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📱</div>
+                    <h3>Mobile App</h3>
+                    <p>Book, extend, and pay for your parking spot with our convenient mobile application.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔌</div>
+                    <h3>EV Charging</h3>
+                    <p>Electric vehicle charging stations available at select parking spots.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🚿</div>
+                    <h3>Vehicle Wash</h3>
+                    <p>Optional car and motorcycle washing services while you're away.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Form -->
+    <section id="booking" class="booking">
+        <div class="section-title">
+            <h2>Book Your Spot</h2>
+        </div>
+        <form class="booking-form">
+            <div class="form-group">
+                <!--            <label for="vehicle-type">Vehicle Type</label>-->
+                <label>Vehicle Type</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="car" name="vehicle-type" value="car" checked>
+                        <label for="car">Car</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="motorcycle" name="vehicle-type" value="motorcycle">
+                        <label for="motorcycle">Motorcycle</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="vip" name="vehicle-type" value="vip">
+                        <label for="vip">VIP Service</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="entry-date">Entry Date & Time</label>
+                <input type="datetime-local" id="entry-date" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="exit-date">Exit Date & Time</label>
+                <input type="datetime-local" id="exit-date" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="license">License Plate Number</label>
+                <input type="text" id="license" class="form-control" placeholder="Enter your license plate number">
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" class="form-control" placeholder="Enter your email address">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number">
+            </div>
+            <button type="submit" class="btn btn-submit">Book Now</button>
+        </form>
+    </section>
+
+</section>
+</body>
+</html>
+
