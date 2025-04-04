@@ -43,12 +43,13 @@ public class SecurityConfigs {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(c -> c.disable())
-                .authorizeHttpRequests(request -> request.requestMatchers("/test").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/home").hasRole("admin")
-                        .requestMatchers(HttpMethod.GET, "/home").hasAnyRole("admin", "user")
-                        .anyRequest().authenticated()
-                )
-                .formLogin(formLogin -> formLogin.loginPage("/auth")
+                .authorizeHttpRequests(
+                        request -> request
+                                .requestMatchers("/auth").permitAll() // Cho phép tất cả truy cập vào /auth mà không cần đăng nhập
+                                .requestMatchers(HttpMethod.GET, "/home").hasAnyRole("admin", "user") // /home chỉ cho phép người dùng có role "admin" hoặc "user"
+                                .anyRequest().authenticated())
+                .formLogin(
+                        formLogin -> formLogin.loginPage("/auth")
                         .loginProcessingUrl("/auth")
                         .usernameParameter("email")
                         .passwordParameter("password")
